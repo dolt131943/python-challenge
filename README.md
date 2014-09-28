@@ -2,5 +2,5 @@ python-challenge
 ================
 
 
-Record my solutions about [python challenge]: http://www.pythonchallenge.com/ 
+Record my solutions about [http://www.pythonchallenge.com/](python challenge)
 
