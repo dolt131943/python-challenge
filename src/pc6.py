@@ -6,9 +6,7 @@ o = pickle.load(f)
 
 for l in o:
     s = ''
-    for t in l:
-        for n in range(t[1]):
-            s += t[0]
+    for t in l:s += ''.join(t[0] for __ in range(t[1]))
     print s
 
 
