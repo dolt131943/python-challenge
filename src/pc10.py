@@ -26,10 +26,10 @@ second = [156,141,165,135,169,131,176,130,187,134,191,140,191,146,186,150,179,15
 77,155,81,148,87,140,96,138,105,141,110,136,111,126,113,129,118,117,128,114,137,115,146,114,155,115,
 158,121,157,128,156,134,157,136,156,136]
 
-im = Image.new('1', (500,500), 1)
+im = Image.new('RGB', (500,500))
 
 draw = ImageDraw.Draw(im)
-draw.line(zip(first[0::2], first[1::2]))
+draw.line(zip(first[0::2], first[1::2])) //draw.line(first)  line not need 2-tuple
 draw.line(zip(second[0::2], second[1::2]))
 
 im.save('pc10.png')
