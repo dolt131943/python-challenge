@@ -1,6 +1,6 @@
 import Image,urllib,StringIO
 
-im = Image.open(StringIO.StringIO(urllib.urlopen('http://www.pythonchallenge.com/pc/return/cave.jpg').read()))
+im = Image.open(StringIO.StringIO(urllib.urlopen('http://huge:file@www.pythonchallenge.com/pc/return/cave.jpg').read()))
 w,h = im.size
 
 for i in range(w):
