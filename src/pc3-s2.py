@@ -1,6 +1,6 @@
 import re,string
 
-in_str = ''.join([line.rstrip() for line in open('pc4-data.txt')])
+in_str = ''.join([line.rstrip() for line in open('pc3-data.txt')])
 
 # print in_str
 
