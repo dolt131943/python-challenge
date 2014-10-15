@@ -1,6 +1,20 @@
-import datetime
+import Image,utils
 
-# 1996 is leap year, and -20 is end with 6 and also leap year
-year = [y for y in range(1996,1005,-20) if y % 4 == 0 and datetime.date(y,1,26).weekday() == 0][1]
+im = Image.open(utils.getUrlToFile("http://huge:file@www.pythonchallenge.com/pc/return/mozart.gif"))
+w,h = im.size
 
-print '%d-1-27' % year
+magenta = 195
+
+bars = []
+
+for j in range(h):
+    for i in range(w):
+        if im.getpixel((i,j)) == magenta and im.getpixel((i+4, j)) == magenta:
+            bars.append((i,j))
+
+shift = Image.new(im.mode,(w,h),0)
+shift.palette = im.palette
+for j in range(h):
+    for i in range(w):
+        shift.putpixel(((i+w-bars[j][0])%w, j), im.getpixel((i,j)))
+shift.save('17.png')

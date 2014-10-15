@@ -1,18 +1,12 @@
-import urllib
+import pickle,urllib
 
-begin_url = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
+f = urllib.urlopen('http://www.pythonchallenge.com/pc/def/banner.p')
 
-nothing = str(16044 /2)
+o = pickle.load(f)
 
-while True:
-    f = urllib.urlopen(begin_url + nothing)
-    line = f.read()
-    print line
-    if ' ' in line:
-        nothing = line[line.rindex(' ')+1:]
-        if not nothing.isdigit():
-            break
-    else:
-        break
+for l in o:
+    s = ''
+    for t in l:s += ''.join(t[0] for __ in range(t[1]))
+    print s
 
-print nothing
+

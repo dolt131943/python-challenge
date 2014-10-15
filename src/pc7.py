@@ -1,26 +1,17 @@
-import zipfile,urllib,StringIO,re
+import urllib,StringIO,Image,re
 
-f = urllib.urlopen('http://www.pythonchallenge.com/pc/def/channel.zip')
+img = Image.open(StringIO.StringIO(urllib.urlopen('http://www.pythonchallenge.com/pc/def/oxygen.png').read()))
 
-zf = zipfile.ZipFile(StringIO.StringIO(f.read()))
+w,h = img.size
 
-target_file = 'readme.txt'
+str1 = ''.join(map(chr, [img.getpixel((i,h//2))[0] for i in range(0,w,7)]))
 
-target_nums = []
+str2 = re.findall('\[(.*)\]', str1)[0]
 
-while True:
-     s = zf.read(target_file)
-     # print s
-     a = re.findall('[(from)|(is)] (\d+)', s)
-     if len(a) > 0:
-        target_nums.append(a[0])
-        target_file = a[0] + '.txt'
-     else:
-        print s
-        break
+arr = str2.split(',')
 
+result = ''.join(map(chr, map(int,arr)))
 
-# print target_nums
-
-result = ''.join([zf.getinfo('%s.txt' %p).comment for p in target_nums])
 print result
+
+

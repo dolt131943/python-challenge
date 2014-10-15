@@ -1,17 +1,11 @@
-import urllib,StringIO,Image,re
+import bz2
 
-img = Image.open(StringIO.StringIO(urllib.urlopen('http://www.pythonchallenge.com/pc/def/oxygen.png').read()))
 
-w,h = img.size
+un = 'BZh91AY&SYA\xaf\x82\r\x00\x00\x01\x01\x80\x02\xc0\x02\x00 \x00!\x9ah3M\x07<]\xc9\x14\xe1BA\x06\xbe\x084'
+pw = 'BZh91AY&SY\x94$|\x0e\x00\x00\x00\x81\x00\x03$ \x00!\x9ah3M\x13<]\xc9\x14\xe1BBP\x91\xf08'
 
-str1 = ''.join(map(chr, [img.getpixel((i,h//2))[0] for i in range(0,w,7)]))
 
-str2 = re.findall('\[(.*)\]', str1)[0]
+print "un:" + bz2.decompress(un)
 
-arr = str2.split(',')
-
-result = ''.join(map(chr, map(int,arr)))
-
-print result
-
+print "pw:" + bz2.decompress(pw)
 

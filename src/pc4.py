@@ -1,14 +1,18 @@
-import re,string
+import urllib
 
-in_str = ''.join([line.rstrip() for line in open('pc4-data.txt')])
+begin_url = 'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='
 
-# print in_str
+nothing = str(16044 /2)
 
-# pattern = re.compile(r'([A-Z]{3})([a-z]{1})([A-Z]{3})')
+while True:
+    f = urllib.urlopen(begin_url + nothing)
+    line = f.read()
+    print line
+    if ' ' in line:
+        nothing = line[line.rindex(' ')+1:]
+        if not nothing.isdigit():
+            break
+    else:
+        break
 
-output = ''
-
-for match in re.finditer(r'([^A-Z][A-Z]{3})([a-z]{1})([A-Z]{3}[^A-Z])', in_str):
-    output += match.group(2)
-
-print output
+print nothing

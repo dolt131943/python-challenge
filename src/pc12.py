@@ -1,11 +1,15 @@
-import Image,urllib,StringIO
+import urllib,StringIO,Image
 
-im = Image.open(StringIO.StringIO(urllib.urlopen('http://huge:file@www.pythonchallenge.com/pc/return/cave.jpg').read()))
-w,h = im.size
+gfx = urllib.urlopen('http://huge:file@www.pythonchallenge.com/pc/return/evil2.gfx').read()
 
-for i in range(w):
-    for j in range(h):
-        if ((i+j) % 2) == 1:
-            im.putpixel((i,j),0)
+def openrw(fn):return open(fn, 'w')
 
-im.save('cave_new.png')
+f = map(openrw, ['1.jpg', '2.png', '3.gif','4.png','5.jpg'])
+
+for i in range(len(gfx)/5):
+    for j in range(5): f[j].write(gfx[i*5+j])
+
+for fn in f : fn.close()
+
+
+
